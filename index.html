@@ -171,9 +171,35 @@ footer small{display:block;font-family:var(--sans);font-size:11px;letter-spacing
 /* Dress code: sezione pronta ma nascosta. Per attivarla impostare DRESS_CODE nello script. */
 #dresscode[hidden]{display:none}
 
+/* ---------- Aggiornamento grafica ---------- */
+body{-webkit-font-smoothing:antialiased}
+.sezione{padding:22px 10px;max-width:640px}
+main > .sezione:first-child{padding-top:40px}
+.carta{padding:34px 22px;border-radius:20px;box-shadow:0 14px 40px rgba(60,40,80,.2);border-color:rgba(201,162,75,.55)}
+h2{font-weight:700;font-size:clamp(32px,8.6vw,44px);color:#1f1830}
+.occhiello{font-size:12.5px;font-weight:700;color:#7a5815}
+.conto b{font-size:clamp(30px,9vw,44px);color:#7a5815}
+.conto span{font-size:11px;font-weight:700;color:#4f4258}
+.festa-ora{font-weight:700;font-size:28px;color:#7a5815}
+.dett{padding:18px 16px}
+.dett small{font-size:11.5px;font-weight:700;color:#5e5066}
+.dett strong{font-weight:700;font-size:24px;color:#1f1830}
+.dett p{font-size:15.5px;font-weight:600;color:#3f3448;line-height:1.45}
+.btn{font-weight:700;font-size:15.5px}
+.btn-no{color:#4f4258;border-color:#a99bb0}
+label{font-size:13px;font-weight:700;color:#4f4258}
+input,textarea{font-weight:600;font-size:17px}
+.nota{font-size:15px;font-weight:600;color:#3f3448}
+.nota a{font-weight:700;color:#7a5815}
+.errore{font-size:14.5px;font-weight:600}
+.grazie p{font-size:15.5px;font-weight:600;color:#3f3448}
+footer small{font-size:12px;font-weight:700;color:#5e5066}
+.titolo{font-weight:700}
+.sopra,.scorri{font-weight:700}
+
 @media (min-width:900px){
   .hero-testo{padding-top:8vh}
-  .sezione{padding:90px 20px}
+  .sezione{padding:32px 20px}
   .carta{padding:48px 44px}
 }
 @media (prefers-reduced-motion:reduce){
