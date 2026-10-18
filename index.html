@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%23c9a24b%27/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -381,10 +382,16 @@ function apri(){
   if(aperta) return; aperta = true;
   scena.classList.add('aperta');
   setTimeout(()=>{ document.body.classList.remove('chiuso'); $('hero').classList.add('vivo'); avviaParticelle(); }, riduci ? 0 : 1300);
-  if(audio){ avviaAudio(); }
 }
-scena.addEventListener('click', apri);
-scena.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' '){ e.preventDefault(); apri(); } });
+function apriConMusica(){
+  if(aperta) return;
+  if(audio) avviaAudio();   /* play() sincrono, dentro il gesto, prima di ogni animazione */
+  apri();
+}
+scena.addEventListener('pointerup', apriConMusica);
+scena.addEventListener('touchend', apriConMusica, {passive:true});
+scena.addEventListener('click', apriConMusica);
+scena.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' '){ e.preventDefault(); apriConMusica(); } });
 
 /* ===== Particelle dorate ===== */
 function avviaParticelle(){
@@ -544,26 +551,49 @@ function coriandoli(){
 /* ===== Musica facoltativa ===== */
 let audio = null;
 const btnM = $('musica');
-const VOL_MAX = .8, FADE_MS = 2000;
-let fadeId = null;
+const VOL_MAX = .8, VOL_INIZIO = .05, FADE_MS = 2000;
+let fadeId = null, riprovaArmata = false;
+function aggiornaTasto(){
+  const on = !!audio && !audio.paused;
+  btnM.classList.toggle('suona', on); btnM.setAttribute('aria-pressed', on ? 'true' : 'false');
+}
 if(AUDIO_SRC){
-  audio = new Audio(); audio.preload = 'none'; audio.loop = true; audio.volume = 0; audio.src = AUDIO_SRC;
+  audio = document.createElement('audio');
+  audio.preload = 'auto'; audio.loop = true; audio.volume = VOL_INIZIO; audio.src = AUDIO_SRC;
+  audio.setAttribute('playsinline','');
+  document.body.appendChild(audio);
+  audio.load();
+  audio.addEventListener('play', aggiornaTasto);
+  audio.addEventListener('playing', () => { aggiornaTasto(); sfuma(); });
+  audio.addEventListener('pause', () => { cancelAnimationFrame(fadeId); aggiornaTasto(); });
   btnM.classList.add('on');
-  btnM.addEventListener('click', () => audio.paused ? avviaAudio() : fermaAudio());
+  btnM.addEventListener('click', e => { e.stopPropagation(); audio.paused ? avviaAudio() : fermaAudio(); });
 }
 function sfuma(){
-  cancelAnimationFrame(fadeId); audio.volume = 0;
-  const t0 = performance.now();
-  const passo = t => { const k = Math.min(1,(t - t0)/FADE_MS); audio.volume = VOL_MAX*k; if(k < 1 && !audio.paused) fadeId = requestAnimationFrame(passo); };
+  cancelAnimationFrame(fadeId);
+  const v0 = audio.volume, t0 = performance.now();
+  const passo = t => { const k = Math.min(1,(t - t0)/FADE_MS); audio.volume = v0 + (VOL_MAX - v0)*k; if(k < 1 && !audio.paused) fadeId = requestAnimationFrame(passo); };
   fadeId = requestAnimationFrame(passo);
 }
-function avviaAudio(){
-  audio.volume = 0;
-  const p = audio.play();
-  btnM.classList.add('suona'); btnM.setAttribute('aria-pressed','true'); sfuma();
-  if(p) p.catch(() => { btnM.classList.remove('suona'); btnM.setAttribute('aria-pressed','false'); });
+function armaRiprova(){
+  if(riprovaArmata) return; riprovaArmata = true;
+  const ev = ['pointerup','touchend','click','keydown'];
+  const una = e => {
+    if(e.target && e.target.closest && e.target.closest('#musica')) return;
+    ev.forEach(n => document.removeEventListener(n, una, true)); riprovaArmata = false;
+    if(audio.paused) avviaAudio();
+  };
+  ev.forEach(n => document.addEventListener(n, una, {capture:true, passive:true}));
 }
-function fermaAudio(){ cancelAnimationFrame(fadeId); audio.pause(); btnM.classList.remove('suona'); btnM.setAttribute('aria-pressed','false'); }
+function avviaAudio(){
+  cancelAnimationFrame(fadeId);
+  audio.volume = VOL_INIZIO;
+  let p;
+  try { p = audio.play(); } catch(err){ armaRiprova(); return; }
+  aggiornaTasto();
+  if(p && p.catch) p.catch(() => { aggiornaTasto(); armaRiprova(); });
+}
+function fermaAudio(){ cancelAnimationFrame(fadeId); audio.pause(); aggiornaTasto(); }
 
 })();
 </script>
