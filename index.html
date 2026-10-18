@@ -209,38 +209,38 @@ footer small{font-size:12px;font-weight:700;color:#5e5066}
   .sole{transform:translateY(10px)}
 }
 
-/* ---------- Box a tutto schermo (telefono) ---------- */
-html.tel .sezione{max-width:none;padding:12px 9px}
-html.tel main > .sezione:first-child{padding-top:30px}
-html.tel .carta{padding:30px 18px;border-radius:18px}
-html.tel .carta::before{inset:6px}
-html.tel h2{font-size:44px;line-height:1.1}
-html.tel .occhiello{font-size:14px;letter-spacing:.3em}
-html.tel .nota,html.tel .dett p{font-size:18px;line-height:1.5}
-html.tel .dett{padding:18px 14px;gap:14px}
-html.tel .dett small{font-size:13px}
-html.tel .dett strong{font-size:27px}
-html.tel .conto b{font-size:44px}
-html.tel .conto span{font-size:12.5px;letter-spacing:.08em}
-html.tel .festa-ora{font-size:30px}
-html.tel label{font-size:15px}
-html.tel input,html.tel textarea{font-size:17px;min-height:54px;padding:15px 16px}
-html.tel textarea{min-height:100px}
-html.tel .contatore button{width:54px;height:54px;flex:0 0 54px;font-size:24px}
-html.tel .contatore input{font-size:26px}
-html.tel .btn{min-height:56px;font-size:17px;flex-basis:100%}
-html.tel .mappa{aspect-ratio:auto;height:320px}
-html.tel .errore,html.tel .grazie p{font-size:17px}
-html.tel footer{font-size:40px}
-html.tel footer small{font-size:13.5px}
-html.tel .nota b{white-space:nowrap}
+/* ---------- Layout mobile ---------- */
+html,body{width:100%;max-width:100%;overflow-x:hidden;overflow-x:clip}
+html{scroll-behavior:auto;overscroll-behavior-y:none}
+body.chiuso{overflow:hidden;height:auto}
+.hero{height:100vh;height:100svh;min-height:560px}
+main{overflow-x:clip}
+.sezione{width:min(100% - 24px,560px);max-width:none;margin:0 auto 28px;padding:0}
+main > .sezione:first-child{padding-top:0;margin-top:0}
+main{padding-top:40px}
+.carta{width:100%;padding:26px 24px;border-radius:20px}
+.carta::before{inset:7px}
+h2{font-size:34px;line-height:1.12}
+.nota,.dett p{font-size:17px;line-height:1.5}
+.dett{padding:16px 14px;gap:14px}
+.dett strong{font-size:22px}
+.conto b{font-size:34px}
+.conto span{font-size:11.5px;letter-spacing:.06em}
+label{font-size:14px}
+input,textarea{font-size:17px;min-height:50px;padding:12px 16px}
+textarea{min-height:90px}
+.contatore button{width:50px;height:50px;flex:0 0 50px}
+.contatore input{min-width:0;font-size:24px}
+.btn{min-height:50px;font-size:16px;flex:1 1 100%;max-width:100%}
+.mappa{aspect-ratio:auto;height:260px}
+.mappa iframe{max-width:100%}
+.errore,.grazie p{font-size:17px}
+.grazie{width:min(100% - 24px,360px)}
+.busta{width:min(100% - 48px,380px)}
+img,iframe,canvas,svg{max-width:100%}
+.nota b{white-space:nowrap}
+@media (min-width:900px){.carta{padding:36px 40px}h2{font-size:36px}}
 </style>
-<script>
-/* Telefono: se Chrome usa una finestra larga (es. "Sito desktop", 980px) si riporta la pagina alla larghezza reale dello schermo */
-(function(){var d=document.documentElement;function adatta(){d.style.zoom='';var sw=Math.min(screen.width,screen.height),iw=window.innerWidth,tocco=('ontouchstart' in window)||navigator.maxTouchPoints>0;
-if(tocco&&sw<=600&&iw>sw*1.2){d.style.zoom=(iw/sw).toFixed(3);d.classList.add('tel')}else if(iw<=600){d.classList.add('tel')}else{d.classList.remove('tel')}}
-adatta();addEventListener('resize',adatta);addEventListener('orientationchange',function(){setTimeout(adatta,300)})})();
-</script>
 </head>
 <body class="chiuso">
 
@@ -381,6 +381,7 @@ let aperta = false;
 function apri(){
   if(aperta) return; aperta = true;
   scena.classList.add('aperta');
+  setTimeout(()=>{ scena.style.display='none'; }, riduci ? 0 : 2700);
   setTimeout(()=>{ document.body.classList.remove('chiuso'); $('hero').classList.add('vivo'); avviaParticelle(); }, riduci ? 0 : 1300);
 }
 function apriConMusica(){
@@ -417,7 +418,7 @@ function avviaParticelle(){
 }
 
 /* ===== Parallasse leggera ===== */
-if(!riduci){
+if(!riduci && !matchMedia('(pointer:coarse)').matches && window.innerWidth>=900){
   const sole = $('sole'), testo = $('heroTesto'), mare = $('mare');
   let in_coda = false;
   window.addEventListener('scroll', () => {
