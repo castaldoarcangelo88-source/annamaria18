@@ -332,7 +332,7 @@ footer small{font-size:12px;font-weight:700;color:#5e5066}
 'use strict';
 
 /* ===== Configurazione ===== */
-const AUDIO_SRC = '';            /* percorso di un file audio (es. 'musica.mp3'); se vuoto il tasto musica resta nascosto */
+const AUDIO_SRC = 'musica.mp3';            /* percorso di un file audio (es. 'musica.mp3'); se vuoto il tasto musica resta nascosto */
 const DRESS_CODE = '';           /* testo del dress code; se compilato la sezione appare */
 const WA_NUMERO = '393519313839';
 const EVENTO_UTC = Date.UTC(2027, 5, 28, 19, 0, 0);   /* 28/06/2027 21:00 ora di Roma (CEST, UTC+2) */
@@ -512,13 +512,26 @@ function coriandoli(){
 /* ===== Musica facoltativa ===== */
 let audio = null;
 const btnM = $('musica');
+const VOL_MAX = .8, FADE_MS = 2000;
+let fadeId = null;
 if(AUDIO_SRC){
-  audio = new Audio(AUDIO_SRC); audio.loop = true; audio.volume = .5;
+  audio = new Audio(); audio.preload = 'none'; audio.loop = true; audio.volume = 0; audio.src = AUDIO_SRC;
   btnM.classList.add('on');
   btnM.addEventListener('click', () => audio.paused ? avviaAudio() : fermaAudio());
 }
-function avviaAudio(){ audio.play().then(() => { btnM.classList.add('suona'); btnM.setAttribute('aria-pressed','true'); }).catch(()=>{}); }
-function fermaAudio(){ audio.pause(); btnM.classList.remove('suona'); btnM.setAttribute('aria-pressed','false'); }
+function sfuma(){
+  cancelAnimationFrame(fadeId); audio.volume = 0;
+  const t0 = performance.now();
+  const passo = t => { const k = Math.min(1,(t - t0)/FADE_MS); audio.volume = VOL_MAX*k; if(k < 1 && !audio.paused) fadeId = requestAnimationFrame(passo); };
+  fadeId = requestAnimationFrame(passo);
+}
+function avviaAudio(){
+  audio.volume = 0;
+  const p = audio.play();
+  btnM.classList.add('suona'); btnM.setAttribute('aria-pressed','true'); sfuma();
+  if(p) p.catch(() => { btnM.classList.remove('suona'); btnM.setAttribute('aria-pressed','false'); });
+}
+function fermaAudio(){ cancelAnimationFrame(fadeId); audio.pause(); btnM.classList.remove('suona'); btnM.setAttribute('aria-pressed','false'); }
 
 })();
 </script>
