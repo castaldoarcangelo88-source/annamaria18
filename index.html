@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Annamaria compie 18 anni! · 28 giugno 2027</title>
+<meta name="description" content="Sei invitato alla festa dei 18 anni di Annamaria: lunedì 28 giugno 2027, ore 21:00, Toma Beach, Licola (Pozzuoli).">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f3b38a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Annamaria compie 18 anni!">
+<meta property="og:description" content="Lunedì 28 giugno 2027, ore 21:00 · Toma Beach, Licola (Pozzuoli). Tocca per aprire l'invito.">
+<meta property="og:image" content="https://castaldoarcangelo88-source.github.io/annamaria18/og.png">
+<meta property="og:url" content="https://castaldoarcangelo88-source.github.io/annamaria18/">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --oro:#c9a24b; --oro-chiaro:#f1d58a; --oro-scuro:#8f6a1f;
+  --avorio:#fbf5e9; --pesca:#f6b48f; --corallo:#ec8a6d; --notte:#2b2340;
+  --serif:"Cormorant Garamond","Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --script:"Great Vibes","Snell Roundhand","Apple Chancery",cursive;
+  --sans:"Montserrat","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--notte);background:#1d1830;overflow-x:hidden;min-height:100vh}
+body.chiuso{overflow:hidden;height:100vh}
+body,h1,h2,strong,b,input{font-variant-numeric:lining-nums tabular-nums}
+.num{font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1}
+
+/* ---------- Busta ---------- */
+#busta-scena{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 35%,#3a2f55 0%,#1d1830 70%);transition:opacity 1s ease 1.6s,visibility 0s linear 2.6s;perspective:1200px}
+#busta-scena.aperta{opacity:0;visibility:hidden;pointer-events:none}
+.busta{position:relative;width:min(84vw,380px);aspect-ratio:1.45;cursor:pointer;transition:transform .6s ease;filter:drop-shadow(0 25px 40px rgba(0,0,0,.45))}
+.busta:hover{transform:translateY(-4px)}
+.busta .fondo{position:absolute;inset:0;border-radius:10px;background:linear-gradient(160deg,#fffaf0,#efe2c6)}
+.busta .lettera{position:absolute;left:6%;right:6%;top:8%;height:84%;border-radius:6px;background:var(--avorio);
+  border:1px solid rgba(201,162,75,.5);display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:transform 1s cubic-bezier(.2,.8,.2,1) .6s;z-index:2}
+.busta .lettera span{font-family:var(--script);color:var(--oro-scuro);font-size:clamp(28px,8vw,40px)}
+.busta .lettera small{font-family:var(--serif);letter-spacing:.3em;font-size:12px;color:var(--oro)}
+.busta .tasca{position:absolute;inset:0;z-index:3;border-radius:10px;overflow:hidden;pointer-events:none}
+.busta .tasca::before{content:"";position:absolute;inset:0;background:linear-gradient(200deg,#f7ecd6,#e8d6b2);
+  clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%)}
+.busta .tasca::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(201,162,75,.18),transparent);
+  clip-path:polygon(0 100%,50% 52%,100% 100%)}
+.busta .aletta{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;transform-origin:top;transition:transform .8s cubic-bezier(.5,0,.3,1),z-index 0s .4s}
+.busta .aletta::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#f3e5c8,#e2cb9c);clip-path:polygon(0 0,100% 0,50% 100%);border-radius:10px 10px 0 0}
+.sigillo{position:absolute;left:50%;top:60%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;z-index:5;
+  background:radial-gradient(circle at 35% 30%,var(--oro-chiaro),var(--oro) 45%,var(--oro-scuro));
+  box-shadow:0 4px 12px rgba(0,0,0,.35),inset 0 0 0 4px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-weight:700;font-size:26px;color:#fff8e6;text-shadow:0 1px 2px rgba(0,0,0,.35);transition:transform .5s,opacity .5s;
+  animation:pulsa 2.4s ease-in-out infinite}
+@keyframes pulsa{50%{box-shadow:0 4px 12px rgba(0,0,0,.35),0 0 0 10px rgba(241,213,138,.15),inset 0 0 0 4px rgba(255,255,255,.18)}}
+.aperta .sigillo{transform:translate(-50%,-50%) scale(.2) rotate(90deg);opacity:0}
+.aperta .aletta{transform:rotateX(180deg);z-index:1}
+.aperta .lettera{transform:translateY(-70%)}
+.aperta .busta{transform:scale(1.05)}
+.invito-tocca{margin-top:34px;color:var(--oro-chiaro);font-family:var(--serif);font-size:19px;letter-spacing:.12em;text-align:center;animation:respira 2s ease-in-out infinite}
+.invito-tocca small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.3em;opacity:.65;margin-top:6px;text-transform:uppercase}
+@keyframes respira{50%{opacity:.5}}
+
+/* ---------- Hero tramonto ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;
+  background:linear-gradient(180deg,#5a4a7a 0%,#c77c8a 28%,#f6a77f 48%,#fcd29a 62%,#fbe3b8 66%)}
+#particelle{position:absolute;inset:0;width:100%;height:100%;z-index:4;pointer-events:none}
+.sole{position:absolute;left:50%;top:44%;width:150px;height:150px;margin-left:-75px;border-radius:50%;z-index:1;
+  background:radial-gradient(circle,#fff6d8 0%,#ffd98a 45%,#ffb46b 75%,rgba(255,170,100,0) 76%);
+  box-shadow:0 0 80px 30px rgba(255,200,120,.55),0 0 160px 80px rgba(255,160,110,.3)}
+.vivo .sole{animation:tramonta 9s cubic-bezier(.3,.1,.3,1) forwards}
+@keyframes tramonta{from{transform:translateY(-120px)}to{transform:translateY(25px)}}
+.mare{position:absolute;left:0;right:0;bottom:0;height:36%;z-index:2;background:linear-gradient(180deg,#e9937a 0%,#a8637c 40%,#4b3d66 100%);overflow:hidden}
+.riflesso{position:absolute;left:50%;top:0;width:90px;height:100%;margin-left:-45px;
+  background:repeating-linear-gradient(180deg,rgba(255,230,160,.85) 0 4px,transparent 4px 11px);
+  -webkit-mask:linear-gradient(180deg,#000,transparent 85%);mask:linear-gradient(180deg,#000,transparent 85%);animation:luccica 2.5s ease-in-out infinite alternate}
+@keyframes luccica{from{transform:scaleX(.7);opacity:.6}to{transform:scaleX(1.3);opacity:1}}
+.onda{position:absolute;left:0;width:200%;height:70px;background-repeat:repeat-x;background-size:50% 100%;animation:ondeggia linear infinite}
+.onda.o1{top:8%;opacity:.5;animation-duration:14s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 70' preserveAspectRatio='none'%3E%3Cpath d='M0 35 Q100 10 200 35 T400 35 T600 35 T800 35 V70 H0Z' fill='%23f3a98a'/%3E%3C/svg%3E")}
+.onda.o2{top:30%;opacity:.55;animation-duration:10s;animation-direction:reverse;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 70' preserveAspectRatio='none'%3E%3Cpath d='M0 35 Q100 5 200 35 T400 35 T600 35 T800 35 V70 H0Z' fill='%23b8708a'/%3E%3C/svg%3E")}
+.onda.o3{top:55%;opacity:.7;animation-duration:7s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 70' preserveAspectRatio='none'%3E%3Cpath d='M0 35 Q100 0 200 35 T400 35 T600 35 T800 35 V70 H0Z' fill='%23614b78'/%3E%3C/svg%3E")}
+@keyframes ondeggia{to{transform:translateX(-50%)}}
+.hero-testo{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:calc(9vh + env(safe-area-inset-top));text-align:center;color:#fff}
+.sopra{font-family:var(--sans);font-size:11px;letter-spacing:.45em;text-transform:uppercase;opacity:0;text-shadow:0 1px 6px rgba(80,40,60,.4)}
+.diciotto{font-family:var(--serif);font-weight:700;font-size:clamp(130px,42vw,230px);line-height:.95;margin-top:6px;opacity:0;transform:scale(.6);
+  background:linear-gradient(100deg,#a87a22 0%,#f7e1a0 25%,#fffbe8 40%,#e2b65a 55%,#a87a22 75%,#f7e1a0 100%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(255,214,140,.65)) drop-shadow(0 4px 6px rgba(90,40,50,.35))}
+.titolo{font-family:var(--serif);font-weight:600;font-size:clamp(30px,8.6vw,52px);line-height:1.1;padding:0 18px;opacity:0;transform:translateY(20px);
+  text-shadow:0 2px 14px rgba(110,50,70,.45)}
+.titolo em{font-family:var(--script);font-style:normal;font-weight:400;font-size:1.35em;display:block;color:#fff6dc;line-height:1.15}
+.vivo .sopra{animation:compari 1s ease .3s forwards}
+.vivo .diciotto{animation:esplodi 1.6s cubic-bezier(.2,.9,.25,1.2) .6s forwards,brilla 4s linear 2.2s infinite}
+.vivo .titolo{animation:compari 1.2s ease 1.6s forwards}
+.vivo .scorri{animation:compari 1s ease 2.6s forwards}
+@keyframes compari{to{opacity:1;transform:none}}
+@keyframes esplodi{0%{opacity:0;transform:scale(.6);filter:blur(12px) drop-shadow(0 0 0 transparent)}60%{opacity:1;filter:blur(0) drop-shadow(0 0 40px rgba(255,230,160,1))}100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 18px rgba(255,214,140,.65)) drop-shadow(0 4px 6px rgba(90,40,50,.35))}}
+@keyframes brilla{to{background-position:-250% 0}}
+.scorri{position:absolute;bottom:calc(22px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:6;opacity:0;color:#fff8e6;font-size:11px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;text-align:center}
+.scorri::after{content:"";display:block;width:14px;height:14px;margin:8px auto 0;border-right:2px solid;border-bottom:2px solid;transform:rotate(45deg);animation:freccia 1.6s ease-in-out infinite}
+@keyframes freccia{50%{transform:translateY(6px) rotate(45deg)}}
+
+/* ---------- Sezioni ---------- */
+main{background:linear-gradient(180deg,#4b3d66 0%,#3a2f55 8%,#fbf5e9 8.01%);}
+.sezione{padding:64px 20px;max-width:640px;margin:0 auto}
+.carta{background:var(--avorio);border-radius:22px;padding:34px 22px;box-shadow:0 18px 50px rgba(60,40,80,.18);border:1px solid rgba(201,162,75,.35);position:relative}
+.carta::before{content:"";position:absolute;inset:8px;border:1px solid rgba(201,162,75,.35);border-radius:16px;pointer-events:none}
+h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,7.5vw,40px);text-align:center;color:var(--notte);line-height:1.15}
+h2 + .riga{width:70px;height:2px;margin:12px auto 26px;background:linear-gradient(90deg,transparent,var(--oro),transparent)}
+.occhiello{display:block;text-align:center;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--oro-scuro);margin-bottom:6px}
+.conto{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+.conto div{background:linear-gradient(180deg,#fff,#f6ead0);border:1px solid rgba(201,162,75,.45);border-radius:14px;padding:14px 2px 10px;text-align:center}
+.conto b{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(26px,8vw,40px);color:var(--oro-scuro);line-height:1}
+.conto span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#7a6a80;margin-top:6px;display:block}
+.festa-ora{text-align:center;font-family:var(--serif);font-size:26px;color:var(--oro-scuro);display:none}
+.dettagli{display:grid;gap:14px}
+.dett{display:flex;gap:16px;align-items:center;padding:16px;border-radius:16px;background:#fff;border:1px solid rgba(201,162,75,.3)}
+.icona{flex:0 0 52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--oro-chiaro),var(--oro));color:#fff}
+.icona svg{width:24px;height:24px}
+.dett small{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#8a7a90}
+.dett strong{display:block;font-family:var(--serif);font-weight:600;font-size:22px;line-height:1.2;color:var(--notte)}
+.dett p{font-size:13px;color:#6b5d72}
+.bottoni{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{flex:1 1 200px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:12px 18px;border-radius:999px;border:0;cursor:pointer;
+  font:600 14px/1.2 var(--sans);letter-spacing:.04em;text-decoration:none;transition:transform .2s,box-shadow .2s;text-align:center}
+.btn:active{transform:scale(.97)}
+.btn-oro{color:#fff;background:linear-gradient(135deg,#d9b25c,#b48731);box-shadow:0 8px 20px rgba(180,135,49,.35)}
+.btn-chiaro{color:var(--oro-scuro);background:#fff;border:1.5px solid var(--oro)}
+.btn-wa{color:#fff;background:linear-gradient(135deg,#2fbf71,#1c9a57);box-shadow:0 8px 20px rgba(30,150,90,.3)}
+.btn-no{color:#7a6a80;background:transparent;border:1.5px solid #cbbfd0}
+.mappa{margin-top:18px;border-radius:16px;overflow:hidden;border:1px solid rgba(201,162,75,.35);aspect-ratio:4/3;background:#efe6d6}
+.mappa iframe{width:100%;height:100%;border:0;display:block}
+form{display:grid;gap:14px}
+label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7a6a80;font-weight:600}
+input,textarea{width:100%;margin-top:6px;font:500 16px var(--sans);padding:14px 16px;border-radius:14px;border:1.5px solid #e2d6bd;background:#fff;color:var(--notte);outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus,textarea:focus{border-color:var(--oro);box-shadow:0 0 0 4px rgba(201,162,75,.18)}
+input[type=number]{-moz-appearance:textfield;appearance:textfield}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+textarea{min-height:80px;resize:vertical}
+.contatore{display:flex;align-items:center;gap:10px;margin-top:6px}
+.contatore button{width:50px;height:50px;border-radius:50%;border:1.5px solid var(--oro);background:#fff;color:var(--oro-scuro);font-size:22px;cursor:pointer}
+.contatore input{margin:0;text-align:center;font-family:var(--serif);font-weight:700;font-size:24px;flex:1}
+.nota{font-size:13px;color:#6b5d72;text-align:center;line-height:1.6}
+.nota a{color:var(--oro-scuro);font-weight:600;text-decoration:none;white-space:nowrap}
+.errore{color:#b2453a;font-size:13px;min-height:1em}
+footer{text-align:center;padding:40px 20px calc(110px + env(safe-area-inset-bottom));font-family:var(--script);font-size:34px;color:var(--oro-scuro)}
+footer small{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.3em;color:#9a8aa0;margin-top:8px}
+
+/* rivelazione allo scorrimento */
+.rivela{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rivela.visto{opacity:1;transform:none}
+.dettagli .dett:nth-child(2){transition-delay:.12s}.dettagli .dett:nth-child(3){transition-delay:.24s}
+
+/* musica */
+#musica{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;width:52px;height:52px;border-radius:50%;border:1px solid rgba(201,162,75,.6);
+  background:rgba(251,245,233,.92);color:var(--oro-scuro);display:none;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.2);backdrop-filter:blur(6px)}
+#musica.on{display:flex}
+#musica svg{width:22px;height:22px}
+#musica.suona svg{animation:gira 3s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+
+#coriandoli{position:fixed;inset:0;width:100%;height:100%;z-index:60;pointer-events:none}
+.grazie{position:fixed;left:50%;top:50%;z-index:61;transform:translate(-50%,-50%) scale(.8);opacity:0;pointer-events:none;background:var(--avorio);
+  border:1px solid var(--oro);border-radius:20px;padding:24px 28px;text-align:center;box-shadow:0 20px 50px rgba(0,0,0,.25);transition:.5s;width:min(86vw,360px)}
+.grazie.mostra{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.grazie strong{font-family:var(--script);font-size:40px;color:var(--oro-scuro);font-weight:400;display:block}
+.grazie p{font-size:14px;color:#6b5d72;margin-top:6px}
+
+/* Dress code: sezione pronta ma nascosta. Per attivarla impostare DRESS_CODE nello script. */
+#dresscode[hidden]{display:none}
+
+@media (min-width:900px){
+  .hero-testo{padding-top:8vh}
+  .sezione{padding:90px 20px}
+  .carta{padding:48px 44px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+  .onda,.riflesso,.sigillo,.invito-tocca{animation:none!important}
+  .sole{transform:translateY(10px)}
+}
+</style>
+</head>
+<body class="chiuso">
+
+<!-- Busta d'apertura -->
+<div id="busta-scena" role="button" tabindex="0" aria-label="Apri l'invito">
+  <div class="busta" id="busta">
+    <div class="fondo"></div>
+    <div class="lettera"><small>INVITO</small><span>Annamaria</span></div>
+    <div class="tasca"></div>
+    <div class="aletta"></div>
+    <div class="sigillo num">18</div>
+  </div>
+  <p class="invito-tocca">Tocca la busta<small>per aprire l'invito</small></p>
+</div>
+
+<header class="hero" id="hero">
+  <div class="sole" id="sole"></div>
+  <div class="mare" id="mare">
+    <div class="riflesso"></div>
+    <div class="onda o1"></div><div class="onda o2"></div><div class="onda o3"></div>
+  </div>
+  <canvas id="particelle" aria-hidden="true"></canvas>
+  <div class="hero-testo" id="heroTesto">
+    <p class="sopra">Sei invitato alla festa</p>
+    <div class="diciotto num" aria-hidden="true">18</div>
+    <h1 class="titolo"><em>Annamaria</em>compie <span class="num">18</span> anni!</h1>
+  </div>
+  <a class="scorri" href="#conto-sez">Scopri</a>
+</header>
+
+<main>
+  <section class="sezione" id="conto-sez">
+    <div class="carta rivela">
+      <span class="occhiello">Manca pochissimo</span>
+      <h2>Il conto alla rovescia</h2><div class="riga"></div>
+      <div class="conto num" id="conto" aria-live="polite">
+        <div><b id="cg">--</b><span>giorni</span></div>
+        <div><b id="co">--</b><span>ore</span></div>
+        <div><b id="cm">--</b><span>minuti</span></div>
+        <div><b id="cs">--</b><span>secondi</span></div>
+      </div>
+      <p class="festa-ora" id="festaOra">È il momento: si festeggia!</p>
+    </div>
+  </section>
+
+  <section class="sezione" id="dettagli">
+    <div class="carta rivela">
+      <span class="occhiello">Segna la data</span>
+      <h2>I dettagli</h2><div class="riga"></div>
+      <div class="dettagli">
+        <div class="dett rivela">
+          <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div>
+          <div><small>Data</small><strong class="num">Lunedì 28 giugno 2027</strong></div>
+        </div>
+        <div class="dett rivela">
+          <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div><small>Ora</small><strong class="num">ore 21:00</strong></div>
+        </div>
+        <div class="dett rivela">
+          <div class="icona"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+          <div><small>Luogo</small><strong>Toma Beach</strong><p>Licola (Pozzuoli, NA)</p></div>
+        </div>
+      </div>
+      <div class="bottoni">
+        <button class="btn btn-oro" id="btnIcs" type="button">Aggiungi al calendario</button>
+        <a class="btn btn-chiaro" id="btnGcal" target="_blank" rel="noopener">Google Calendar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRESS CODE: sezione pronta, nascosta. Per attivarla basta compilare DRESS_CODE nello script qui sotto. -->
+  <section class="sezione" id="dresscode" hidden>
+    <div class="carta rivela">
+      <span class="occhiello">Come vestirsi</span>
+      <h2>Dress code</h2><div class="riga"></div>
+      <p class="nota" id="dresscodeTesto"></p>
+    </div>
+  </section>
+
+  <section class="sezione" id="luogo">
+    <div class="carta rivela">
+      <span class="occhiello">Come arrivare</span>
+      <h2>Toma Beach</h2><div class="riga"></div>
+      <p class="nota">Licola, Pozzuoli (NA) · in riva al mare, al&nbsp;tramonto</p>
+      <div class="mappa" id="mappa"></div>
+      <div class="bottoni">
+        <a class="btn btn-oro" id="btnMaps" target="_blank" rel="noopener">Apri in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione" id="conferma">
+    <div class="carta rivela">
+      <span class="occhiello">Ci sarai?</span>
+      <h2>Conferma la presenza</h2><div class="riga"></div>
+      <p class="nota" style="margin-bottom:20px">Conferma ad Anna entro il <b class="num">31 maggio 2027</b><br>su WhatsApp al <a class="num" href="https://wa.me/393519313839" target="_blank" rel="noopener">+39 351 931 3839</a></p>
+      <form id="modulo" novalidate>
+        <div><label for="nome">Nome e cognome</label><input id="nome" name="nome" autocomplete="name" placeholder="Il tuo nome" required></div>
+        <div><label for="persone">Numero di persone</label>
+          <div class="contatore"><button type="button" id="meno" aria-label="Meno">−</button><input id="persone" class="num" type="number" inputmode="numeric" min="1" max="20" value="1"><button type="button" id="piu" aria-label="Più">+</button></div></div>
+        <div><label for="allergie">Allergie o intolleranze</label><textarea id="allergie" placeholder="Nessuna, oppure scrivile qui"></textarea></div>
+        <p class="errore" id="errore" role="alert"></p>
+        <div class="bottoni" style="margin-top:0">
+          <button class="btn btn-wa" type="submit">Confermo su WhatsApp</button>
+          <button class="btn btn-no" type="button" id="btnNo">Non posso venire</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer>Ti aspetto!<small>ANNAMARIA · 18</small></footer>
+</main>
+
+<button id="musica" type="button" aria-label="Musica on/off" aria-pressed="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+</button>
+<canvas id="coriandoli" aria-hidden="true"></canvas>
+<div class="grazie" id="grazie"><strong>Grazie!</strong><p id="grazieTesto">Si apre WhatsApp con il messaggio pronto.</p></div>
+
+<script>
+(function(){
+'use strict';
+
+/* ===== Configurazione ===== */
+const AUDIO_SRC = '';            /* percorso di un file audio (es. 'musica.mp3'); se vuoto il tasto musica resta nascosto */
+const DRESS_CODE = '';           /* testo del dress code; se compilato la sezione appare */
+const WA_NUMERO = '393519313839';
+const EVENTO_UTC = Date.UTC(2027, 5, 28, 19, 0, 0);   /* 28/06/2027 21:00 ora di Roma (CEST, UTC+2) */
+const LUOGO = 'Toma Beach, Licola, Pozzuoli (NA)';
+const RICERCA_MAPPA = 'Toma Beach Licola';
+
+const riduci = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = id => document.getElementById(id);
+
+/* ===== Busta ===== */
+const scena = $('busta-scena');
+let aperta = false;
+function apri(){
+  if(aperta) return; aperta = true;
+  scena.classList.add('aperta');
+  setTimeout(()=>{ document.body.classList.remove('chiuso'); $('hero').classList.add('vivo'); avviaParticelle(); }, riduci ? 0 : 1300);
+  if(audio){ avviaAudio(); }
+}
+scena.addEventListener('click', apri);
+scena.addEventListener('keydown', e => { if(e.key==='Enter' || e.key===' '){ e.preventDefault(); apri(); } });
+
+/* ===== Particelle dorate ===== */
+function avviaParticelle(){
+  const c = $('particelle'), x = c.getContext('2d');
+  let w, h, dpr = Math.min(window.devicePixelRatio||1, 2), p = [];
+  function dim(){ w = c.clientWidth; h = c.clientHeight; c.width = w*dpr; c.height = h*dpr; x.setTransform(dpr,0,0,dpr,0,0); }
+  dim(); window.addEventListener('resize', dim);
+  const n = riduci ? 25 : Math.round(Math.min(90, w/4));
+  for(let i=0;i<n;i++) p.push({x:Math.random()*w, y:Math.random()*h, r:Math.random()*1.8+.4, v:Math.random()*.35+.08, f:Math.random()*6.28, s:Math.random()*.02+.005});
+  function giro(){
+    x.clearRect(0,0,w,h);
+    for(const q of p){
+      q.f += q.s; q.y -= q.v; q.x += Math.sin(q.f)*.3;
+      if(q.y < -5){ q.y = h+5; q.x = Math.random()*w; }
+      const a = .45 + Math.sin(q.f*3)*.4;
+      x.beginPath(); x.fillStyle = 'rgba(255,224,150,'+a.toFixed(2)+')';
+      x.shadowColor = 'rgba(255,210,120,.9)'; x.shadowBlur = 8;
+      x.arc(q.x,q.y,q.r,0,6.283); x.fill();
+    }
+    if(!riduci) requestAnimationFrame(giro);
+  }
+  giro();
+}
+
+/* ===== Parallasse leggera ===== */
+if(!riduci){
+  const sole = $('sole'), testo = $('heroTesto'), mare = $('mare');
+  let in_coda = false;
+  window.addEventListener('scroll', () => {
+    if(in_coda) return; in_coda = true;
+    requestAnimationFrame(() => {
+      const y = Math.min(window.scrollY, window.innerHeight);
+      testo.style.transform = 'translateY(' + (y*.35) + 'px)';
+      testo.style.opacity = String(1 - y/(window.innerHeight*.8));
+      sole.style.translate = '0 ' + (y*.2) + 'px';
+      mare.style.transform = 'translateY(' + (-y*.08) + 'px)';
+      in_coda = false;
+    });
+  }, {passive:true});
+}
+
+/* ===== Conto alla rovescia ===== */
+const due = n => String(n).padStart(2,'0');
+function aggiorna(){
+  let d = Math.max(0, EVENTO_UTC - Date.now());
+  if(d === 0){ $('conto').style.display='none'; $('festaOra').style.display='block'; return; }
+  const s = Math.floor(d/1000);
+  $('cg').textContent = Math.floor(s/86400);
+  $('co').textContent = due(Math.floor(s%86400/3600));
+  $('cm').textContent = due(Math.floor(s%3600/60));
+  $('cs').textContent = due(s%60);
+}
+aggiorna(); setInterval(aggiorna, 1000);
+
+/* ===== Rivelazione allo scorrimento ===== */
+if('IntersectionObserver' in window){
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visto'); io.unobserve(e.target); } }), {threshold:.15});
+  document.querySelectorAll('.rivela').forEach(el => io.observe(el));
+} else document.querySelectorAll('.rivela').forEach(el => el.classList.add('visto'));
+
+/* ===== Calendario ===== */
+const titoloEv = 'Festa dei 18 anni di Annamaria';
+const descEv = 'Annamaria compie 18 anni! Conferme ad Anna entro il 31 maggio 2027 su WhatsApp: +39 351 931 3839';
+$('btnGcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+  + '&text=' + encodeURIComponent(titoloEv)
+  + '&dates=20270628T190000Z/20270629T010000Z'
+  + '&ctz=Europe/Rome'
+  + '&details=' + encodeURIComponent(descEv)
+  + '&location=' + encodeURIComponent(LUOGO);
+$('btnIcs').addEventListener('click', () => {
+  const esc = t => t.replace(/\\/g,'\\\\').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n');
+  const ora = new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+/,'');
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Festa Annamaria//Invito//IT','CALSCALE:GREGORIAN','METHOD:PUBLISH',
+    'BEGIN:VEVENT','UID:festa-18-annamaria-20270628@invito','DTSTAMP:'+ora,
+    'DTSTART:20270628T190000Z','DTEND:20270629T010000Z',
+    'SUMMARY:'+esc(titoloEv),'DESCRIPTION:'+esc(descEv),'LOCATION:'+esc(LUOGO),
+    'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:'+esc(titoloEv),'END:VALARM',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  const url = URL.createObjectURL(new Blob([ics], {type:'text/calendar;charset=utf-8'}));
+  const a = document.createElement('a'); a.href = url; a.download = 'festa-18-annamaria.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+});
+
+/* ===== Mappa ===== */
+const q = encodeURIComponent(RICERCA_MAPPA);
+$('btnMaps').href = 'https://www.google.com/maps/search/?api=1&query=' + q;
+const mappa = $('mappa');
+function caricaMappa(){
+  if(mappa.firstChild) return;
+  const f = document.createElement('iframe');
+  f.src = 'https://maps.google.com/maps?q=' + q + '&z=14&output=embed';
+  f.title = 'Mappa: Toma Beach, Licola'; f.loading = 'lazy'; f.referrerPolicy = 'no-referrer-when-downgrade';
+  mappa.appendChild(f);
+}
+if('IntersectionObserver' in window){
+  const im = new IntersectionObserver(es => { if(es.some(e=>e.isIntersecting)){ caricaMappa(); im.disconnect(); } }, {rootMargin:'300px'});
+  im.observe(mappa);
+} else caricaMappa();
+
+/* ===== Dress code (nascosto finché DRESS_CODE è vuoto) ===== */
+if(DRESS_CODE){ $('dresscodeTesto').textContent = DRESS_CODE; $('dresscode').hidden = false; }
+
+/* ===== Modulo di conferma ===== */
+const pers = $('persone');
+const fissa = v => { v = parseInt(v,10); if(isNaN(v)||v<1) v=1; if(v>20) v=20; pers.value = v; };
+$('meno').onclick = () => fissa(+pers.value - 1);
+$('piu').onclick = () => fissa(+pers.value + 1);
+pers.addEventListener('change', () => fissa(pers.value));
+function apriWA(testo){
+  window.open('https://wa.me/' + WA_NUMERO + '?text=' + encodeURIComponent(testo), '_blank', 'noopener');
+}
+function mostraGrazie(t){
+  $('grazieTesto').textContent = t;
+  const g = $('grazie'); g.classList.add('mostra');
+  setTimeout(() => g.classList.remove('mostra'), 3200);
+}
+$('modulo').addEventListener('submit', e => {
+  e.preventDefault();
+  const nome = $('nome').value.trim();
+  if(!nome){ $('errore').textContent = 'Scrivi il tuo nome, per favore.'; $('nome').focus(); return; }
+  $('errore').textContent = '';
+  fissa(pers.value);
+  const all = $('allergie').value.trim() || 'nessuna';
+  coriandoli();
+  mostraGrazie('Si apre WhatsApp con il messaggio pronto.');
+  apriWA('Ciao Anna, confermo la presenza alla festa di Annamaria: Nome ' + nome + ', persone ' + pers.value + ', allergie ' + all + '.');
+});
+$('btnNo').addEventListener('click', () => {
+  const nome = $('nome').value.trim();
+  mostraGrazie('Peccato! Si apre WhatsApp per avvisare Anna.');
+  apriWA('Ciao Anna, purtroppo non posso venire alla festa di Annamaria' + (nome ? ': ' + nome : '') + '. Tanti auguri!');
+});
+
+/* ===== Coriandoli dorati ===== */
+function coriandoli(){
+  const c = $('coriandoli'), x = c.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio||1, 2), w = innerWidth, h = innerHeight;
+  c.width = w*dpr; c.height = h*dpr; x.setTransform(dpr,0,0,dpr,0,0);
+  const colori = ['#f1d58a','#c9a24b','#fff3cf','#e0b45e','#f6b48f','#ffffff'];
+  const n = riduci ? 0 : 160, p = [];
+  for(let i=0;i<n;i++) p.push({x:w/2, y:h*.55, vx:(Math.random()-.5)*14, vy:-Math.random()*16-4, r:Math.random()*6.28, vr:(Math.random()-.5)*.3, s:Math.random()*6+4, c:colori[i%colori.length], t:0});
+  let fine = performance.now() + 4000;
+  (function giro(t){
+    x.clearRect(0,0,w,h);
+    for(const q of p){
+      q.vy += .35; q.vx *= .99; q.x += q.vx; q.y += q.vy; q.r += q.vr;
+      x.save(); x.translate(q.x,q.y); x.rotate(q.r); x.fillStyle = q.c;
+      x.fillRect(-q.s/2, -q.s/4, q.s, q.s/2*Math.abs(Math.cos(q.r*2))+1); x.restore();
+    }
+    if(t < fine && n) requestAnimationFrame(giro); else x.clearRect(0,0,w,h);
+  })(performance.now());
+}
+
+/* ===== Musica facoltativa ===== */
+let audio = null;
+const btnM = $('musica');
+if(AUDIO_SRC){
+  audio = new Audio(AUDIO_SRC); audio.loop = true; audio.volume = .5;
+  btnM.classList.add('on');
+  btnM.addEventListener('click', () => audio.paused ? avviaAudio() : fermaAudio());
+}
+function avviaAudio(){ audio.play().then(() => { btnM.classList.add('suona'); btnM.setAttribute('aria-pressed','true'); }).catch(()=>{}); }
+function fermaAudio(){ audio.pause(); btnM.classList.remove('suona'); btnM.setAttribute('aria-pressed','false'); }
+
+})();
+</script>
+</body>
+</html>
